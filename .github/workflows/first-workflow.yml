@@ -1,4 +1,4 @@
-name: First GitHub Actions Workflow
+name: Python CI
 
 on:
   push:
@@ -6,15 +6,17 @@ on:
       - main
 
 jobs:
-  hello:
+  python:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say Hello
-        run: echo "Hello from GitHub Actions!"
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Show current directory
-        run: pwd
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
-      - name: List files
-        run: ls -la
+      - name: Run Python program
+        run: python app.py
