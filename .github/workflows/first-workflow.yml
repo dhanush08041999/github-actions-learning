@@ -26,8 +26,9 @@ jobs:
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Push Docker image to ECR
+      - name: Build and Push Docker image
         run: |
+          docker build -t github-actions-learning:latest .
           docker tag github-actions-learning:latest 168217059640.dkr.ecr.eu-north-1.amazonaws.com/github-actions-learning:latest
           docker push 168217059640.dkr.ecr.eu-north-1.amazonaws.com/github-actions-learning:latest  
 
