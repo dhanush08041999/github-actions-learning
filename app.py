@@ -6,14 +6,14 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
-        self.wfile.write(b"""
-        <html>
-        <body>
-            <h1>Hello from GitHub Actions!</h1>
-            <h2>Deployed from ECR to EC2 🚀</h2>
-        </body>
-        </html>
-        """)
+        self.wfile.write("""
+<html>
+<body>
+    <h1>Hello from GitHub Actions!</h1>
+    <h2>Deployed from ECR to EC2</h2>
+</body>
+</html>
+""".encode("utf-8"))
 
 server = HTTPServer(("0.0.0.0", 3000), Handler)
 
