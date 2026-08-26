@@ -41,3 +41,11 @@ jobs:
         run: |
           docker push \
           168217059640.dkr.ecr.eu-north-1.amazonaws.com/github-actions-learning:latest
+
+      - name: Deploy to EC2
+        run: |
+          aws ssm send-command \
+            --instance-ids "i-0fec1b7d22aa764dd" \
+            --document-name "AWS-RunShellScript" \
+            --parameters 'commands=["echo GitHub Actions connected successfully"]' \
+            --region eu-north-1    
