@@ -30,6 +30,19 @@ jobs:
           aws-region: eu-north-1
           
       - name: Login to Amazon ECR
-        uses: aws-actions/amazon-ecr-login@v2
+        uses: aws-actions/amazon-
+        
+      - name: Tag Docker image
+        run: |
+          docker tag github-actions-learning:latest \
+          168217059640.dkr.ecr.eu-north-1.amazonaws.com/github-actions-learning:latest
+
+      - name: Push Docker image
+        run: |
+          docker push \
+          168217059640.dkr.ecr.eu-north-1.amazonaws.com/github-actions-learning:latest  
+        
+        
+        ecr-login@v2
 
       
