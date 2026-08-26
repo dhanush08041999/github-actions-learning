@@ -28,10 +28,10 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::168217059640:role/GitHubActions-ECR-Role-1
           aws-region: eu-north-1
-          
+
       - name: Login to Amazon ECR
-        uses: aws-actions/amazon-
-        
+        uses: aws-actions/amazon-ecr-login@v2
+
       - name: Tag Docker image
         run: |
           docker tag github-actions-learning:latest \
@@ -40,9 +40,4 @@ jobs:
       - name: Push Docker image
         run: |
           docker push \
-          168217059640.dkr.ecr.eu-north-1.amazonaws.com/github-actions-learning:latest  
-        
-        
-        ecr-login@v2
-
-      
+          168217059640.dkr.ecr.eu-north-1.amazonaws.com/github-actions-learning:latest
